@@ -1,4 +1,6 @@
 import { useState } from "react";
+import {Helmet} from "react-helmet";
+
 import RandomChar from "../randomChar/RandomChar";
 import CharList from "../charList/CharList";
 import CharInfo from "../charInfo/CharInfo";
@@ -15,6 +17,10 @@ const MainPage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Main Page</title>
+        <meta name="description" content='Description of Main Page' />
+      </Helmet>
       <ErrorBoundary>
         <RandomChar/>
       </ErrorBoundary>

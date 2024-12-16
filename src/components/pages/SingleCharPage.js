@@ -1,10 +1,11 @@
-  import './singleComicPage.scss';
-
 import { useState, useEffect } from 'react';
+import {useParams , Link} from "react-router-dom";
+import {Helmet} from "react-helmet";
+
+import './singleComicPage.scss';
 import useMarvelService from '../../services/MarvelService';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
-import {useParams , Link} from "react-router-dom";
 
 const SingleCharPage = () => {
   const {charId} = useParams();
@@ -43,12 +44,15 @@ const SingleCharPage = () => {
   )
 }
 
-
-const View = ({char}) => {
+function View ({char}) {
     const {name, description, thumbnail} = char;
 
     return (
       <>
+        <Helmet>
+          <title>{name}</title>
+          <meta name="description" content={description} />
+        </Helmet>
         <div className="single-comic">
           <img src={thumbnail} alt={name} className="single-comic__img"/>
           <div className="single-comic__info">
